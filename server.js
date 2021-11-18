@@ -20,13 +20,17 @@ const users_table = "sipo_users";
 const orderBy = "id";
 
 // GET products
-let { data, error } = await supabase
-	.from(products_table)
-	.select("*")
-	.order(orderBy, { ascending: true });
+// let { data, error } = await supabase
+// 	.from(products_table)
+// 	.select("*")
+// 	.order(orderBy, { ascending: true });
 
 //GET
-server.get("/api", (request, response) => {
+server.get("/api", async (request, response) => {
+	let { data, error } = await supabase
+		.from(products_table)
+		.select("*")
+		.order(orderBy, { ascending: true });
 	response.send(data);
 });
 
